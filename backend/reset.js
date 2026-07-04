@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import User from "./models/user.model.js";
 
-dotenv.config(); // 🔥 THIS IS MISSING
+dotenv.config(); // 
 
 await mongoose.connect(process.env.MONGODB_URL);
 
