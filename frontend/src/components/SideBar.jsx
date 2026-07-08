@@ -50,8 +50,9 @@ function SideBar() {
 
     return aOnline ? -1 : 1;
   });
+
   const filteredUsers = sortedUsers.filter((user) =>
-  user.name.toLowerCase().includes(searchText.toLowerCase())
+  (user?.name || "").toLowerCase().includes((searchText || "").toLowerCase())
 );
 
   return (
@@ -102,32 +103,35 @@ function SideBar() {
 
             <h2 className="text-3xl font-bold text-white mt-1 break-words">
 
-              {userData?.name}
+              {userData?.name || userData?.username}
 
             </h2>
 
           </div>
-
+          {/* image to profile nevigate */}
           <div
-            className="
-              w-24
-              h-24
-              rounded-full
-              overflow-hidden
-              border-4
-              border-white
-              shadow-2xl
-              ring-4
-              ring-white/20
-            "
-          >
-
-            <img
-              src={userData?.image || dp}
-              alt="profile"
-              className="w-full h-full object-cover"
-            />
-
+  onClick={() => navigate("/profile")}
+  className="
+    w-24
+    h-24
+    rounded-full
+    overflow-hidden
+    border-4
+    border-white
+    shadow-2xl
+    ring-4
+    ring-white/20
+    cursor-pointer
+    hover:scale-105
+    transition-all
+    duration-300
+  "
+>
+  <img
+    src={userData?.image || dp}
+    alt="profile"
+    className="w-full h-full object-cover"
+  />
           </div>
 
         </div>
@@ -286,7 +290,7 @@ function SideBar() {
 
                   <img
                     src={user.image || dp}
-                    alt={user.name}
+                    alt={user.name || user.username}
                     className="
                       w-14
                       h-14
@@ -327,7 +331,7 @@ function SideBar() {
                       truncate
                     "
                   >
-                    {user.name}
+                    {user.name || user.username}
                   </h2>
 
                   <p

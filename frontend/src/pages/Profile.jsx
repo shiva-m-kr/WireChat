@@ -27,7 +27,9 @@ function Profile() {
     // ===========================
 
     // Stores updated name
-    const [name, setName] = useState(userData.name || "");
+    // Falls back to username when no display name has been set yet,
+    // so the field is pre-filled and immediately editable/savable.
+    const [name, setName] = useState(userData.name || userData.username || "");
 
     // Image shown on frontend
     const [frontendImage, setFrontendImage] = useState(

@@ -55,7 +55,7 @@ function Signup() {
 
       setEmail("");
       setPassword("");
-      navigate("/login");
+      navigate("/");
     } catch (error) {
       console.log(error.response?.data);
 
